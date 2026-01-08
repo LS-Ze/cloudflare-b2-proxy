@@ -1,19 +1,30 @@
 {
-  "private": true,
-  "name": "cf-b2-webhook",
+  "name": "aws-s3-proxy",
   "version": "1.0.0",
-  "description": "A template for kick starting a Cloudflare Workers project",
+  "type": "module",
+  "description": "AWS S3 compatible API proxy for Cloudflare Workers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write '**/*.{js,css,json,md}'"
-  },
-  "author": "ppatterson <pat@backblaze.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "prettier": "^1.18.2"
+    "deploy": "wrangler publish",
+    "dev": "wrangler dev",
+    "tail": "wrangler tail --format=pretty"
   },
   "dependencies": {
-    "aws4fetch": "^1.0.13"
-  }
+    "aws4fetch": "^1.0.17"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240925.0",
+    "typescript": "^5.6.2"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "s3",
+    "proxy",
+    "qiniu",
+    "backblaze",
+    "b2"
+  ],
+  "author": "",
+  "license": "MIT"
 }
