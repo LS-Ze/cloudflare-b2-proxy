@@ -1,19 +1,22 @@
-# wrangler.toml
-name = 'aws-signature-proxy-worker'
-type = "webpack"
+name = "aws-s3-proxy"
+main = "index.js"
+compatibility_date = "2023-09-21"
+compatibility_flags = ["nodejs_compat"]
 
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
-compatibility_date = "2022-02-24"
-
-# Don't put your application key in this file!
-# You should set it as a secret in the Cloudflare dashboard or at the command line:
-# echo "<your b2 application key>" | wrangler secret put AWS_SECRET_ACCESS_KEY
 [vars]
-AWS_ACCESS_KEY_ID = "<your b2 application key id>"
-AWS_SECRET_ACCESS_KEY = "Remove this line after you make AWS_SECRET_ACCESS_KEY a secret in the UI!"
-AWS_S3_ENDPOINT = "<your S3 endpoint - e.g. s3.us-west-001.backblazeb2.com >"
-# WEBHOOK_URL is optional - you can set it to an empty string
-WEBHOOK_URL = "<e.g. https://api.example.com/webhook/1 >"
+# 七牛云配置示例
+AWS_S3_ENDPOINT = "s3.ap-southeast-1.qiniucs.com"  # 七牛云S3服务域名
+AWS_S3_BUCKET = "lsdns-oss"                        # 七牛云S3空间名
+
+# Backblaze B2配置示例（取消注释以使用）
+# AWS_S3_ENDPOINT = "s3.us-west-002.backblazeb2.com"  # Backblaze B2端点
+# AWS_S3_BUCKET = "your-backblaze-bucket"             # Backblaze存储桶名
+
+# 可选配置
+# WEBHOOK_URL = "https://your-webhook-url.com"        # webhook通知URL
+
+[build]
+command = "npm install aws4fetch"
+[build.upload]
+format = "modules"
+main = "index.js"
