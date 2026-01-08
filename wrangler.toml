@@ -1,14 +1,14 @@
-name = "aws-s3-proxy"
+name = "aws-signature-proxy-worker"
 main = "index.js"
 compatibility_date = "2023-09-21"
 compatibility_flags = ["nodejs_compat"]
 
 [vars]
-# 七牛云配置示例
+# 七牛云S3配置
 AWS_S3_ENDPOINT = "s3.ap-southeast-1.qiniucs.com"  # 七牛云S3服务域名
 AWS_S3_BUCKET = "lsdns-oss"                        # 七牛云S3空间名
 
-# Backblaze B2配置示例（取消注释以使用）
+# Backblaze B2配置（取消注释以使用）
 # AWS_S3_ENDPOINT = "s3.us-west-002.backblazeb2.com"  # Backblaze B2端点
 # AWS_S3_BUCKET = "your-backblaze-bucket"             # Backblaze存储桶名
 
@@ -17,6 +17,3 @@ AWS_S3_BUCKET = "lsdns-oss"                        # 七牛云S3空间名
 
 [build]
 command = "npm install aws4fetch"
-[build.upload]
-format = "modules"
-main = "index.js"
